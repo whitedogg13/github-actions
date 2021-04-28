@@ -17,3 +17,13 @@ jobs:
         run: |
           import platform
           print(platform.processor())
+  use-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: call other actions
+        id: greet
+        uses: actions/hello-world-javascript-action@v1
+        with:
+          who-to-greet: Richie
+      - name: show action result
+        run: echo "${{ steps.greet.outputs.time }}"
