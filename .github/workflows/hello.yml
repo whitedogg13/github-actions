@@ -27,3 +27,16 @@ jobs:
           who-to-greet: Richie
       - name: show action result
         run: echo "${{ steps.greet.outputs.time }}"
+  checkout-action:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get codes
+        uses: actions/checkout@v1
+      - name: list files
+        run: |
+          pwd
+          ls -a
+          echo $GITHUB_SHA
+          echo $GITHUB_REPOSITORY
+          echo $GITHUB_WORKSPACE
+          echo "${{ github.token }}"
